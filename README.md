@@ -6,4 +6,7 @@ Learning terraform
 - Providers
 - Variables
 - Debugs/Outputs
-- ???
+- Interpolations
+- Locals
+- DataSources
+-
