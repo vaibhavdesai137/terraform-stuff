@@ -19,13 +19,26 @@ variable us-east-1-zones {
 variable instance-type {
   default = "t2.micro"
 }
-variable instance-name {
-  default = ["my", "ec2", "instance"]
+
+# All Locals
+locals {
+  frontend_instance_name = "my-ec2-instance-frontend"
+  backend_instance_name  = "my-ec2-instance-backend"
 }
 
 resource "aws_instance" "frontend" {
   tags {
-    Name = "${join("-", var.instance-name)}"
+    Name = "${local.frontend_instance_name}"
+  }
+  count                 = "${var.multi-az-deploy ? 2 : 1}"
+  availability_zone     = "${var.us-east-1-zones[count.index]}"
+  ami                   = "${var.us-east-1-ami}"
+  instance_type         = "${var.instance-type}"
+}
+
+resource "aws_instance" "backend" {
+  tags {
+    Name = "${local.backend_instance_name}"
   }
   count                 = "${var.multi-az-deploy ? 2 : 1}"
   availability_zone     = "${var.us-east-1-zones[count.index]}"
@@ -35,6 +48,10 @@ resource "aws_instance" "frontend" {
 
 output "frontend-ips" {
   value = "${aws_instance.frontend.*.public_ip}"
+}
+
+output "backend-ips" {
+  value = "${aws_instance.backend.*.public_ip}"
 }
 
 # terraform init
