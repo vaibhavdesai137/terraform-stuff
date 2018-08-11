@@ -1,0 +1,31 @@
+
+Create 4 computes each in 2 different reagions and output the IPs. A total of 8 servers.
+
+- US-EAST-1
+    -- US-EAST-1a   
+        --- frontend
+            ---- 1 server 
+        --- backend
+            ---- 1 server 
+    -- US-EAST-1b   
+        --- frontend
+            ---- 1 server 
+        --- backend
+            ---- 1 server 
+- US-WEST-1
+    -- US-WEST-1b   
+        --- frontend
+            ---- 1 server 
+        --- backend
+            ---- 1 server 
+    -- US-WEST-1b  
+        --- frontend
+            ---- 1 server 
+        --- backend
+            ---- 1 server 
+
+
+Requirements:
+1. If updated, new frontend servers must be up before destroying old ones
+2. Backend servers cannot be deleted or changed
+3. Frontend servers can come up only after backend servers are created

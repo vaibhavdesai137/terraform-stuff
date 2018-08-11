@@ -1,2 +1,9 @@
 # terraform-stuff
-Fooling around with terraform
+Learning terraform
+
+- Basics
+- Resources
+- Providers
+- Variables
+- Debugs/Outputs
+- ???
