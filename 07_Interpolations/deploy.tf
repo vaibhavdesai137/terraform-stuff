@@ -8,7 +8,7 @@ provider "aws" {
 
 # All Variables
 variable multi-az-deploy {
-  default = true
+  default = false
 }
 variable us-east-1-ami {
   default = "ami-2757f631"
