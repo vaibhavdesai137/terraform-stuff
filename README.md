@@ -9,4 +9,8 @@ Learning terraform
 - Interpolations
 - Locals
 - DataSources
--
+- Modules
+- Backends
+- Workspaces
+- Provisioners (Remote)
+- Provisioners (Local)
