@@ -15,5 +15,6 @@ variable "total_instances" {
   default = 1
 }
 
+# Read from terraform.tfvars
 variable "aws_access_key" {}
 variable "aws_secret_key" {}

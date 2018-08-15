@@ -1,17 +1,21 @@
 
-# Providers
+# All Providers
 provider "aws" {
-  access_key = "ACCESS_KEY"
-  secret_key = "SECRET_KEY"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
   region     = "us-east-1"
   alias      = "us-east-1"
 }
 provider "aws" {
-  access_key = "ACCESS_KEY"
-  secret_key = "SECRET_KEY"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
   region     = "us-west-1"
   alias      = "us-west-1"
 }
+
+# Read from terraform.tfvars
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 
 # DataSources
 data "aws_availability_zones" "us-east-1" {
@@ -22,9 +26,6 @@ data "aws_availability_zones" "us-west-1" {
 }
 
 # Variables
-variable multi-az-deploy {
-  default = true
-}
 variable us-east-1-ami {
   default = "ami-2757f631"
 }
@@ -34,17 +35,22 @@ variable us-west-1-ami {
 variable instance-type {
   default = "t2.micro"
 }
+variable instance-name {
+  default = "placeholder-ec2-instance"
+}
 
-# Locals
+# All Locals
+# Local values assign a name to an expression, that can then be used multiple times within a module.
 locals {
-  frontend_instance_name = "my-ec2-instance-frontend"
-  backend_instance_name  = "my-ec2-instance-backend"
+  frontend_instance_name = "${replace(var.instance-name, "placeholder", "frontend")}"
+  backend_instance_name  = "${replace(var.instance-name, "placeholder", "backend")}"
 }
 
 resource "aws_instance" "east-frontend" {
   tags {
     Name = "${local.frontend_instance_name}"
   }
+  count                 = "2"
   provider              = "aws.us-east-1"
   availability_zone     = "${data.aws_availability_zones.us-east-1.names[count.index]}"
   ami                   = "${var.us-east-1-ami}"
@@ -55,8 +61,8 @@ resource "aws_instance" "east-backend" {
   tags {
     Name = "${local.backend_instance_name}"
   }
+  count                 = "2"
   provider              = "aws.us-east-1"
-  count                 = "${var.multi-az-deploy ? 2 : 1}"
   availability_zone     = "${data.aws_availability_zones.us-east-1.names[count.index]}"
   ami                   = "${var.us-east-1-ami}"
   instance_type         = "${var.instance-type}"
@@ -66,6 +72,7 @@ resource "aws_instance" "west-frontend" {
   tags {
     Name = "${local.frontend_instance_name}"
   }
+  count                 = "2"
   provider              = "aws.us-west-1"
   availability_zone     = "${data.aws_availability_zones.us-west-1.names[count.index]}"
   ami                   = "${var.us-west-1-ami}"
@@ -76,8 +83,8 @@ resource "aws_instance" "west-backend" {
   tags {
     Name = "${local.backend_instance_name}"
   }
+  count                 = "2"
   provider              = "aws.us-west-1"
-  count                 = "${var.multi-az-deploy ? 2 : 1}"
   availability_zone     = "${data.aws_availability_zones.us-west-1.names[count.index]}"
   ami                   = "${var.us-west-1-ami}"
   instance_type         = "${var.instance-type}"

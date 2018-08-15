@@ -1,10 +1,14 @@
 
 # All Providers
 provider "aws" {
-  access_key = "ACCESS_KEY"
-  secret_key = "SECRET_KEY"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
   region     = "us-east-1"
 }
+
+# Read from terraform.tfvars
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 
 # All Variables
 variable multi-az-deploy {
