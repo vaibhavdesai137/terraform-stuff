@@ -12,5 +12,5 @@ Learning terraform
 - Modules
 - Backends
 - Workspaces
-- Provisioners (Remote)
-- Provisioners (Local)
+- Provisioners (Execute ON remote host, using terraform)
+- Provisioners (Execute FROM local host, using ansible)
