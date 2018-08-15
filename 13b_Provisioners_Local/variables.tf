@@ -1,10 +1,10 @@
 
 variable "key_name" {
-  default = "vaibhav-personal-aws"
+  default = "vaibhavdesai137-aws"
 }
 
 variable "pvt_key" {
-  default = "/home/vaibhav/.ssh/vaibhav-personal-aws.pem"
+  default = "/Users/vaibhav/.ssh/vaibhavdesai137-aws.pem"
 }
 
 variable "us-east-zones" {
