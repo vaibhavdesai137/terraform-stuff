@@ -1,0 +1,15 @@
+
+- Three workspaces: staging, prod
+- Two modules: frontend and backend
+- AZs selected using Data Sources
+
+- Deploy staging to us-west-1
+- Deploy prod to us-east-1
+
+- Frontend: Use remote exec to do some stupid file copy and write to temp file on ec2
+- Backend: Use local exec via ansible to write to temp file on ec2
+
+- Staging: 1 frontend instance, 1 backend instance
+- Prod: 2 frontend instances, 2 backend instances
+
+- Use S3 to store terraform states

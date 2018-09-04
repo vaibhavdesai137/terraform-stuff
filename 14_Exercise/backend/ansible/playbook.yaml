@@ -1,0 +1,6 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Dummy file writing on ec2 instance via ansible
+      raw: echo FOO BAR >> /tmp/test.txt
