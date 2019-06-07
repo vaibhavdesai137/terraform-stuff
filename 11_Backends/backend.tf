@@ -11,6 +11,7 @@ terraform {
 # Credentials are being read from ~/.aws directory
 # A template of .aws directory is created in this current directory
 # Ideally, you should create that in the home directory
+#
 # You can set multiple profiles with each having its own access/secret key
 # export AWS_PROFILE=default
 # export AWS_PROFILE=myDev

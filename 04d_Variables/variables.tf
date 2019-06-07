@@ -1,6 +1,6 @@
 
 #
-# Uses cnd line to pass variables
+# Uses cmd line to pass variables
 # Will create once instance each in "us-east-1a" and "us-east-1c"
 #
 
@@ -10,7 +10,7 @@ provider "aws" {
   region     = "us-east-1"
 }
 
-# will be set by env var TF_VAR_zones  
+# value be passed from cmd line 
 variable "zones" { 
   type = "list"
 }

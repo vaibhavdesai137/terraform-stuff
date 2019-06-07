@@ -21,6 +21,7 @@ resource "aws_instance" "myinstance" {
     create_before_destroy = true
   }
 
+  # Used by terraform to SSH to execute whatever is in "provisioner "remote-exec" block
   connection {
     user        = "ubuntu"
     type        = "ssh"
@@ -33,7 +34,8 @@ resource "aws_instance" "myinstance" {
     destination = "~/"
   }
 
-  # Executes locally on endpoint
+  #
+  # Executes locally on endpoint (terraform will SSH)
   # SSH into endpoint and verify the copy was successful
   #
   # Change permissions on .pem file before SSHing because private keys must be readable only by the owner

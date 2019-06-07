@@ -23,6 +23,6 @@ resource "aws_instance" "myinstance" {
 }
 
 # terraform init
-# terraform apply (create resources)
+# terraform apply -var-file=zones.tfvars (create resources and use a separate var file)
 # terraform show (render local state)
 # terraform destroy (delete everything)

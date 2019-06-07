@@ -1,4 +1,4 @@
-
+ 
 terraform {
   backend "s3" {
     bucket 	= "terraform-demo-vaibhav"
@@ -63,11 +63,21 @@ output "frontend_ips" {
 }
 
 output "backend_ips" {
-  value = "${module.backend.ips}"
+  value = "${terraform.workspace}: ${module.backend.ips}"
 }
 
 # terraform workspace new staging
 # terraform workspace new prod
+
+# terraform workspace select staging
 # terraform init
 # terraform apply
 # terraform destroy
+
+# terraform workspace select prod
+# terraform init
+# terraform apply
+# terraform destroy
+
+# terraform workspace delete staging
+# terraform workspace delete prod
