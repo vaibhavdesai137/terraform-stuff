@@ -14,3 +14,13 @@ Learning terraform
 - Workspaces
 - Provisioners (Execute ON remote host directly via SSH, using terraform)
 - Provisioners (Execute FROM local host on remote host, using ansible)
+
+- AWS
+    - VPC
+    - EBS
+    - IAM
+    - Route 53
+    - ASG
+    - RDS
+    - ELB
+    - Lambda
