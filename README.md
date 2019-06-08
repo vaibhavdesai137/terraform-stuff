@@ -1,5 +1,4 @@
 # terraform-stuff
-Learning terraform
 
 - Basics
 - Resources
