@@ -1,4 +1,10 @@
 
+//
+// THIS DOES NOT WORK. AWS's ASG MODULES ARE NOT UPDATED YET TO SUPPORT TERRAFORM VERSION v0.12.
+// https://github.com/terraform-aws-modules/terraform-aws-autoscaling/issues/66
+//
+
+
 provider "aws" {
   region = "eu-west-1"
 }
