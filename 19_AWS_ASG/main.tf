@@ -1,11 +1,6 @@
 
-//
-// THIS DOES NOT WORK. AWS's ASG MODULES ARE NOT UPDATED YET TO SUPPORT TERRAFORM VERSION v0.12.
-// https://github.com/terraform-aws-modules/terraform-aws-autoscaling/issues/66
-//
-
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 // Read from terraform.tfvars
@@ -86,7 +81,7 @@ module "autoscaling-example" {
   // Will use the launch configuration when creating new instances
   //
   asg_name                  = "my-asd"
-  vpc_zone_identifier       = ["${data.aws_subnet_ids.subnets.ids}"]
+  vpc_zone_identifier       = "${data.aws_subnet_ids.subnets.ids}"
   health_check_type         = "EC2"
   min_size                  = 0
   max_size                  = 1
