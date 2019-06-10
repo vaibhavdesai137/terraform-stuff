@@ -4,7 +4,6 @@
 // https://github.com/terraform-aws-modules/terraform-aws-autoscaling/issues/66
 //
 
-
 provider "aws" {
   region = "eu-west-1"
 }
