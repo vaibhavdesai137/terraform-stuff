@@ -25,3 +25,9 @@
 - RDS
 - ELB
 - Lambda
+
+### GCP
+
+- Kubernetes Cluster
+- Kubernetes App (Pods, Services, Deployments)
+- Kubernetes Persistence (MongoDB)
