@@ -21,6 +21,10 @@
 // leave blank (helm will point to whatever kubectl is pointing to)
 provider "helm" {}
 
+//
+// NOT WORKING. NEEDS TO FIGURE OUT THE RBAC & CLUSTERROLEBINDING FOR TILLER (Helm's server)
+//
+
 // Whole lot of other configs available but this is bare minimum
 resource "helm_release" "mongodb" {
 
