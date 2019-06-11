@@ -23,6 +23,9 @@
 // 
 // Hitting that endpoint should fetch the default nginx page
 //
+// Use the cmd below to let kubectkl point to GCP cluster instead of local
+// gcloud container clusters get-credentials terraform-k8s-243400-cluster --zone us-east1-b --project terraform-k8s-243400
+//
 
 // leave blank to pickup config from kubectl config of local system (or wherever kubectl is pointing to)
 provider kubernetes {
